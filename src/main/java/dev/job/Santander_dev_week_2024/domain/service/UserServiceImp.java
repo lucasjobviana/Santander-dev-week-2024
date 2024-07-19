@@ -35,6 +35,11 @@ public class UserServiceImp implements UserServiceI{
 
     @Override
     public Optional<User> create(User user) {
+//        if(this.repository.){}
+//        user.getAccount().getNumber()
+        if(this.repository.existsByAccountNumber(user.getAccount().getNumber())){
+            throw new IllegalArgumentException("This account number already exists.");
+        }
         User userSaved = this.repository.save(user);
         if(Objects.equals(userSaved.getName(), user.getName())){
             return Optional.of(userSaved);
