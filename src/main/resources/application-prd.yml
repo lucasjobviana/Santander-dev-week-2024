@@ -1,0 +1,22 @@
+spring:
+  datasource:
+#    postgresql://postgres:CznSEICJFpWcGtYEthvGvtJKNSnkUdAl@postgres:
+#      railway:
+#        internal:5432/railway:
+#    url: jdbc:${{ DATABASE_URL }}
+#    url: ${{ Postgres.DATABASE_URL }}
+#    url: jdbc:postgresql://postgres.railway.internal:5432/railway
+#    username: postgres
+#    password: CznSEICJFpWcGtYEthvGvtJKNSnkUdAl
+    url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
+#    url:  jdbc:postgresql://postgres:CznSEICJFpWcGtYEthvGvtJKNSnkUdAl@viaduct.proxy.rlwy.net:34863/railway
+    username: ${PGUSER}
+    password: ${PGPASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    hibernate:
+      ddl-auto: create
